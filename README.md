@@ -5,6 +5,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 ***not optimized for mobile yet***
 
 • Developed a platform to showcase recent tech internship postings to help undergrad and new grad students find internship opportunities with an integrated user-friendly resume builder tool.
+
 • Designed an API to web scrape using BeautifulSoup4 (an HTML parser) from tech job postings and store data in JSON.
 • Parsed JSON and displayed the internship details and application link on the web application.
 • Used Flask and Python in the back end where the web scraping and resume-building functions are declared
