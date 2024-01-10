@@ -1,0 +1,393 @@
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>Your Resume</title>
+  <style type="text/css">
+    * {
+      margin: 0;
+      padding: 0;
+      text-indent: 0;
+    }
+    h1 {
+      color: black;
+      font-family: Georgia, serif;
+      font-style: normal;
+      font-weight: bold;
+      text-decoration: none;
+      font-size: 24.5pt;
+    }
+    .p,
+    p {
+      color: black;
+      font-family: Georgia, serif;
+      font-style: normal;
+      font-weight: normal;
+      text-decoration: none;
+      font-size: 10pt;
+      margin: 0pt;
+    }
+    .s1 {
+      color: black;
+      font-family: "Times New Roman", serif;
+      font-style: italic;
+      font-weight: normal;
+      text-decoration: none;
+      font-size: 10pt;
+    }
+    a {
+      color: black;
+      font-family: Georgia, serif;
+      font-style: normal;
+      font-weight: normal;
+      text-decoration: none;
+      font-size: 10pt;
+    }
+    .s2 {
+      color: black;
+      font-family: "Times New Roman", serif;
+      font-style: normal;
+      font-weight: normal;
+      text-decoration: none;
+      font-size: 1pt;
+    }
+    .s3 {
+      color: black;
+      font-family: Georgia, serif;
+      font-style: normal;
+      font-weight: normal;
+      text-decoration: none;
+      font-size: 12pt;
+    }
+    h2 {
+      color: black;
+      font-family: Georgia, serif;
+      font-style: normal;
+      font-weight: bold;
+      text-decoration: none;
+      font-size: 11pt;
+    }
+    .s4 {
+      color: black;
+      font-family: Georgia, serif;
+      font-style: normal;
+      font-weight: normal;
+      text-decoration: none;
+      font-size: 11pt;
+    }
+    .s5 {
+      color: black;
+      font-family: "Palatino Linotype", serif;
+      font-style: italic;
+      font-weight: normal;
+      text-decoration: none;
+      font-size: 10pt;
+    }
+    h3 {
+      color: black;
+      font-family: Georgia, serif;
+      font-style: normal;
+      font-weight: bold;
+      text-decoration: none;
+      font-size: 10pt;
+    }
+    li {
+      display: block;
+    }
+    #l1 {
+      padding-left: 0pt;
+    }
+    #l1 > li > *:first-child:before {
+      content: "• ";
+      color: black;
+      font-family: Arial, sans-serif;
+      font-style: italic;
+      font-weight: normal;
+      text-decoration: none;
+      font-size: 6pt;
+      vertical-align: 1pt;
+    }
+  </style>
+</head>
+
+<body>
+  <h1
+    style="
+      padding-left: 121pt;
+      text-indent: 0pt;
+      line-height: 27pt;
+      text-align: center;
+    "
+  >
+    {{data.firstName}} {{data.lastName}}
+  </h1>
+  <p
+    style="
+      padding-bottom: 1pt;
+      padding-left: 121pt;
+      text-indent: 0pt;
+      line-height: 11pt;
+      text-align: center;
+    "
+  >
+    {{data.phone}}
+    <a
+      href="mailto:x@x.com"
+      style="
+        color: black;
+        font-family: 'Times New Roman', serif;
+        font-style: italic;
+        font-weight: normal;
+        text-decoration: none;
+        font-size: 10pt;
+      "
+      target="_blank"
+      >| </a
+    >{{data.email}}
+    <a
+      href={{data.linkedin}}
+      style="
+        color: black;
+        font-family: 'Times New Roman', serif;
+        font-style: italic;
+        font-weight: normal;
+        text-decoration: none;
+        font-size: 10pt;
+      "
+      target="_blank"
+      >| </a
+    >{{data.linkedin}}
+    <a
+      href={{data.github}}
+      style="
+        color: black;
+        font-family: 'Times New Roman', serif;
+        font-style: italic;
+        font-weight: normal;
+        text-decoration: none;
+        font-size: 10pt;
+      "
+      target="_blank"
+      >| </a
+    ><a href="https://github.com/." target="_blank">
+      {{data.github}}</a>
+  </p>
+  <p
+    class="s2"
+    style="
+      padding-left: 192pt;
+      text-indent: 0pt;
+      line-height: 1pt;
+      text-align: left;
+    "
+  ></p>
+  <p style="text-indent: 0pt; text-align: left"><br /></p>
+  <p style="text-indent: 0pt; text-align: left"></p>
+  <p
+    class="s3"
+    style="
+      padding-top: 2pt;
+      padding-left: 6pt;
+      text-indent: 0pt;
+      text-align: left;
+    "
+  >
+    <a name="bookmark0">Education</a>
+    {%for education in data.educationBlocks%}
+  </p>
+  <h2
+    style="
+      padding-top: 5pt;
+      padding-left: 16pt;
+      text-indent: 0pt;
+      text-align: left;
+    "
+  >
+    {{education.university}} <span class="s4">{{education.location}}</span>
+  </h2>
+  <p class="s5" style="padding-left: 16pt; text-indent: 0pt; text-align: left">
+    {{education.degree}} in {{education.major}} {{education.startDate}} – {{education.endDate}}
+  </p>
+  <h2
+    style="
+      padding-top: 5pt;
+      padding-left: 16pt;
+      text-indent: 0pt;
+      text-align: left;
+    "
+  >
+  <ul id="l1">
+    <li data-list-text="•">
+      <p
+        style="
+          padding-top: 1pt;
+          padding-left: 40pt;
+          text-indent: -9pt;
+          text-align: left;
+        "
+      >
+        {{education.gpa}}
+       
+      </p>
+    </li>
+
+    <li data-list-text="•">
+      <p
+        style="
+          padding-top: 1pt;
+          padding-left: 40pt;
+          text-indent: -9pt;
+          text-align: left;
+        "
+      >
+  
+        {{education.coursework}}
+      </p>
+    </li>
+    {% endfor %}
+
+
+    <a name="bookmark1">Experience</a>
+    {% for experience in data.experienceBlocks %}
+  </p>
+  <h2
+    style="
+      padding-top: 5pt;
+      padding-left: 16pt;
+      text-indent: 0pt;
+      text-align: left;
+    "
+  >
+    
+    {{experience.title}} | {{experience.company}} <span class="s4">{{experience.startDate}} – {{experience.endDate}}</span>
+  </h2>
+  <p class="s5" style="padding-left: 16pt; text-indent: 0pt; text-align: left">
+    {{experience.location}}
+  </p>
+  <ul id="l1">
+    <li data-list-text="•">
+      <p
+        style="
+          padding-top: 1pt;
+          padding-left: 40pt;
+          text-indent: -9pt;
+          text-align: left;
+        "
+      >
+        {{experience.desc1}}
+      </p>
+    </li>
+
+    <li data-list-text="•">
+      <p
+        style="
+          padding-top: 1pt;
+          padding-left: 40pt;
+          text-indent: -9pt;
+          text-align: left;
+        "
+      >
+        {{experience.desc2}}
+      </p>
+    </li>
+
+    <li data-list-text="•">
+      <p
+        style="
+          padding-top: 1pt;
+          padding-left: 40pt;
+          text-indent: -9pt;
+          text-align: left;
+        "
+      >
+        {{experience.desc3}}
+      </p>
+    </li>
+    
+    
+    {% endfor %}
+
+        <a name="bookmark2">Projects</a>
+      {% for project in data.projectBlocks %}
+      </p>
+      <h3
+        style="
+          padding-top: 6pt;
+          padding-left: 16pt;
+          text-indent: 0pt;
+          text-align: left;
+        "
+      >
+        {{project.name}} <span class="s1">| </span
+        ><span class="s5">{{project.skills}} </span
+        ><span class="s4">{{project.startDate}} – {{project.endDate}}</span>
+      </h3>
+    </li>
+    <li data-list-text="•">
+      <p
+        style="
+          padding-top: 1pt;
+          padding-left: 40pt;
+          text-indent: -9pt;
+          text-align: left;
+        "
+      >
+        {{project.desc1}}
+      </p>
+    </li>
+
+    <li data-list-text="•">
+      <p
+        style="
+          padding-top: 1pt;
+          padding-left: 40pt;
+          text-indent: -9pt;
+          text-align: left;
+        "
+      >
+        {{project.desc2}}
+      </p>
+    </li>
+
+    <li data-list-text="•">
+      <p
+        style="
+          padding-top: 1pt;
+          padding-left: 40pt;
+          text-indent: -9pt;
+          text-align: left;
+        "
+      >
+        {{project.desc3}}
+      </p>
+    </li>
+    {% endfor %}
+    
+
+    <a name="bookmark3">Technical Skills</a>
+  </p>
+  <h3
+    style="
+      padding-top: 6pt;
+      padding-left: 16pt;
+      text-indent: 0pt;
+      text-align: left;
+    "
+  >
+    Languages<span class="p"
+      >: {{data.languages}}</span
+    >
+  </h3>
+  <h3 style="padding-left: 16pt; text-indent: 0pt; text-align: left">
+    Frameworks<span class="p"
+      >: {{data.frameworks}}</span
+    >
+  </h3>
+  <h3 style="padding-left: 16pt; text-indent: 0pt; text-align: left">
+    Developer Tools<span class="p"
+      >: {{data.devtools}}</span
+    >
+  </h3>
+  <h3 style="padding-left: 16pt; text-indent: 0pt; text-align: left">
+    Libraries<span class="p">: {{data.libraries}}</span>
+  </h3>
+</body>
+

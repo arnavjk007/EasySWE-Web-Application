@@ -1,0 +1,309 @@
+<link href='https://fonts.googleapis.com/css?family=Lato:400,300,700' rel='stylesheet' type='text/css'>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  html {
+    height: 100%;  
+  }
+  
+  body {
+    min-height: 100%;  
+    background: #eee;
+    font-family: 'Lato', sans-serif;
+    font-weight: 400;
+    color: #222;
+    font-size: 14px;
+    line-height: 26px;
+    padding-bottom: 50px;
+  }
+  
+  .container {
+    max-width: 700px;   
+    background: #fff;
+    margin: 0px auto 0px; 
+    box-shadow: 1px 1px 2px #DAD7D7;
+    border-radius: 3px;  
+    padding: 40px;
+    margin-top: 50px;
+  }
+  
+  .header {
+    margin-bottom: 5px;
+    
+    .full-name {
+      font-size: 40px;
+      text-transform: uppercase;
+      margin-bottom: 5px;
+    }
+    
+    .first-name {
+      font-weight: 700;
+    }
+    
+    .last-name {
+      font-weight: 300;
+    }
+    
+    .contact-info {
+      margin-bottom: 20px;
+    }
+    
+    .email ,
+    .phone {
+      color: #999;
+      font-weight: 300;
+    } 
+    
+    .separator {
+      height: 10px;
+      display: inline-block;
+      border-left: 2px solid #999;
+      margin: 0px 10px;
+    }
+    
+    .position {
+      font-weight: bold;
+      display: inline-block;
+      margin-right: 10px;
+      text-decoration: underline;
+    }
+  }
+  
+  
+  .details {
+    line-height: 20px;
+    
+    .section {
+      margin-bottom: 10px;  
+    }
+    
+    .section:last-of-type {
+      margin-bottom: 0px;  
+    }
+    
+    .section__title {
+      letter-spacing: 2px;
+      color: #54AFE4;
+      font-weight: bold;
+      margin-bottom: 0px;
+      text-transform: uppercase;
+    }
+    
+    .section__list-item {
+      margin-bottom: 15px;
+      font-size: 12px;
+    }
+    
+    .section__list-item:last-of-type {
+      margin-bottom: 0;
+    }
+    
+    .left ,
+    .right {
+      vertical-align: top;
+      display: inline-block;
+    }
+
+    .rightD {
+      position: relative;
+      left:-50px;
+      vertical-align: top;
+      display: inline-block;
+      font-size: 12px;
+    }
+    
+    .left {
+      width: 60%;    
+    }
+    
+    .right {
+      tex-align: right;
+      width: 39%;    
+    }
+
+    .rightD {
+      position: relative;
+      left:-50px;
+      tex-align: right;
+      width: 39%;    
+      font-size: 12px;
+    }
+    
+    .name {
+      font-weight: bold;
+    }
+
+    .desc {
+      width: 350px;
+    }
+
+    .degree {
+      width: 290px;
+    }
+    
+    a {
+      text-decoration: none;
+      color: #000;
+      font-style: italic;
+    }
+    
+    a:hover {
+      text-decoration: underline;
+      color: #000;
+    }
+    
+    .skills {
+      
+    }
+      
+    .skills__item {
+      margin-bottom: 10px;  
+    }
+    
+    .skills__item .right {
+      input {
+        display: none;
+      }
+      
+      label {
+        display: inline-block;  
+        width: 20px;
+        height: 20px;
+        background: #C3DEF3;
+        border-radius: 20px;
+        margin-right: 3px;
+      }
+      
+      input:checked + label {
+        background: #79A9CE;
+      }
+    }
+  }
+</style>
+
+<div class="container">
+  <div class="header">
+    <div class="full-name">
+      <span class="first-name">{{data.firstName}}</span> 
+      <span class="last-name">{{data.lastName}}</span>
+    </div>
+    <div class="contact-info">
+      <span class="email-val">{{data.email}}</span>
+      <span class="separator"></span>
+      <span class="phone-val">{{data.phone}}</span>
+      <span class="separator"></span>
+      <span class="phone-val">{{data.linkedin}}</span>
+      <span class="separator"></span>
+      <span class="phone-val">{{data.github}}</span>
+    </div>
+    
+  </div>
+
+  
+   <div class="details">
+    <div class="section">
+      <div class="section__title">Experience</div>
+
+      {% for experience in data.experienceBlocks%}
+      
+      <div class="section__list">
+        <div class="section__list-item">
+          <div class="left">
+            <div class="name">{{experience.company}}</div>
+            <div class="addr">{{experience.location}}</div>
+            <div class="duration">{{experience.startDate}} - {{experience.endDate}}</div>
+          </div>
+          <div class="rightD">
+            <div class="name">{{experience.title}}</div>
+            <div class="desc">• {{experience.desc1}}</div>
+            <div class="desc">• {{experience.desc2}}</div>
+            <div class="desc">• {{experience.desc3}}</div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+      
+
+
+    
+    <div class="section">
+      <div class="section__title">Education</div>
+
+      {% for education in data.educationBlocks %}
+
+      <div class="section__list">
+        <div class="section__list-item">
+          <div class="left">
+            <div class="name">{{education.university}}</div>
+            <div class="degree">{{education.degree}} in {{education.major}}</div>
+            <div class="addr">{{education.location}}</div>
+            <div class="duration">{{education.startDate}} - {{education.endDate}}</div>
+          </div>
+          <div class="rightD">
+            <div class="name">GPA: {{education.gpa}}</div>
+            <div class="desc">Relevant Coursework: {{education.coursework}}</div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      
+  </div>
+
+      
+
+    
+     <div class="section">
+      <div class="section__title">Projects</div> 
+
+      {% for project in data.projectBlocks %}
+
+       <div class="section__list">
+         <div class="section__list-item">
+           <div class="name">{{project.name}} | {{project.skills}}</div>
+           <div class="duration">{{project.startDate}} - {{project.endDate}}</div>
+           <div class="text">• {{project.desc1}}</div>
+           <div class="text">• {{project.desc2}}</div>
+           <div class="text">• {{project.desc3}}</div>
+         </div>
+         {% endfor %}
+       </div>
+    </div>
+
+    
+
+     <div class="section">
+       <div class="section__title">Skills</div>
+       <div class="skills">
+         <div class="skills__item">
+           <div class="left"><div class="name">
+             Frameworks: {{data.frameworks}}
+             </div></div>
+         </div>
+         
+       </div>
+       <div class="skills__item">
+           <div class="left"><div class="name">
+             Languages: {{data.languages}}
+            </div></div>
+         </div>
+
+         <div class="skills__item">
+          <div class="left"><div class="name">
+            Developer Tools: {{data.devtools}}
+           </div></div>
+        </div>
+
+        <div class="skills__item">
+          <div class="left"><div class="name">
+            Libraries: {{data.libraries}}
+           </div></div>
+        </div>
+         
+       </div>
+     </div>
+  </div>
+</div>
