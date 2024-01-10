@@ -1,0 +1,35 @@
+
+<main class="table" id="table">
+    <section class="table__header">
+        <h1>Top 200 Recent Internship Postings</h1>
+    </section>
+    <section class="table__body">
+        <table>
+            <thead>
+                <tr>
+                    <th> ID </th>
+                    <th> Company </th>
+                    <th> Date </th>
+                    <th> Location </th>
+                    <th> Role </th>
+                    <th> Link </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let job of listofjobs; let i = index">
+                    <td> {{i + 1}} </td>
+                    <td> {{ job.company }} </td>
+                    <td> {{ job.date }}</td>
+                    <td> {{ job.location }}</td>
+                    <td> {{ job.role }} </td>
+                    <td><a href = {{job.link}} target="_blank" rel="noopener noreferrer">
+                        <img src ="https://static.thenounproject.com/png/2863113-200.png">
+                    </a>
+                </td> 
+                </tr>
+            </tbody>
+        </table>
+    </section>
+</main>
+
+

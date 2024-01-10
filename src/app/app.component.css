@@ -1,0 +1,119 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+.header {
+    position: relative;
+    width: 100%;
+    top: -10px;
+    display: inline-flex;
+    justify-content: space-between;
+}
+
+.nav {
+    position: relative;
+    display: inline-flex;
+    float: right;
+    font-size: large;
+    top: 40px;
+    left: -60px;
+    
+}
+
+.title {
+    position: relative;
+    float: left;
+    display: inline-flex;
+    font-size: large;
+    top: 40px;
+    left: 60px;
+    justify-content: space-between;
+}
+
+.header ul li {
+    display: inline-flex;
+    list-style: none;
+}
+
+.header ul li a {
+    display: inline-block;
+    color: #333;
+    font-weight: 900;
+    margin-left: 40px;
+    text-decoration: none;
+}
+
+section {
+    position:relative;
+    width: 100%;
+    min-height: 100vh;
+    padding: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-image: linear-gradient(rgba(219, 118, 36, 0.5), rgba(221, 188, 98, 0.5));
+}
+
+h1 {
+    position: relative;
+    color: #333;
+    font-weight: 900;
+    font-size: xx-large;
+    text-decoration: none;
+}
+
+button {
+    position: relative;
+    display: inline-block;
+    color: #333;
+    font-weight: 900;
+    margin-left: 40px;
+    background: transparent;
+    display: inline-block;
+    color: #333;
+    font-weight: 900;
+    margin-left: 40px;
+    text-decoration: none;
+    
+
+}
+
+.textbox header {
+    position: relative;
+    left: 50px;
+}
+
+.textbox a {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 8px 30px;
+    background-color: rgb(4, 2, 0);
+    color: #fff;
+    border-radius: 90px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-decoration: none;
+}
+
+.content {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.content .imgbox {
+    width: 600px;
+}
+
+.content .imgbox img {
+    position: relative;
+    max-width: 700px;
+    left: -150px;
+}
