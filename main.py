@@ -11,25 +11,22 @@ cors = CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
 
 internship_values = []
+
 #scrapes internships from job postings -> list of dict
     
 def scrape():
-    #print("called scrape!")
-    url = "https://github.com/SimplifyJobs/Summer2024-Internships/blob/dev/README.md"
+    url = #insert URLS
     response = requests.get(url)
     global internship_values
     internship_values = parseHTML(response.content)
     
 def parseHTML(content):
-
-    
     soup = BeautifulSoup(content, 'html.parser')
-    #one table for github
+    
+    #one table 
     div = soup.find_all('table')
     table = div
-    #table = div.find('table', class_='')
-    print(len(table))
-
+    
     #gets column titles
     col_titles = soup.find_all('th')
 
@@ -56,11 +53,7 @@ def parseHTML(content):
         # Find all data for each column
         columns = row.find_all('td')
         col_links.append(columns[3].a['href'])
-    
-    #gets href link 
-    #col_links = [web_link['href'] for web_link in col_links] 
 
-    
     internships = []
     #modify structure from job board
     i = 0
@@ -93,8 +86,7 @@ def parseHTML(content):
 
             i += 1
             internships.append(internship)
-            
-    #print("internship data list" + str(internships))       
+                 
     return internships
     
 #function to fetch internships w/ API route 
@@ -112,9 +104,7 @@ def build_resume():
     try:
         if request.method == 'POST':
             page = buildTemplate(data)
-            print("Got POST request ... " + str(request.json))
             return jsonify(page)
-            #return jsonify(isError=False, message="Success", data=page, statusCode=200), 200
         else:
             return jsonify(isError=True, message="Method not allowed", statusCode=404), 404
     except:
@@ -126,11 +116,9 @@ def buildTemplate(info):
 
 
 if __name__ == '__main__':
-    scheduler = BackgroundScheduler()
-    scheduler.add_job(scrape, 'interval', hours=12)
-    scheduler.start()
+    
     app.run(host='0.0.0.0',debug=True)
-    #app.run(debug=True)
+
     
         
         
