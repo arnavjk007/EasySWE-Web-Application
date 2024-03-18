@@ -1,0 +1,362 @@
+<div class="wrapper">
+    <div class="inputBox">    
+        <form #resumeData="ngForm" [formGroup]="resumeBuilderForm">
+            <div class="container">
+            <div class="block">
+                <h1>General Information</h1>
+                First Name<input type="text" formControlName="firstName" placeholder="Ex: John" required><br>
+                Last Name<input type="text" formControlName="lastName" placeholder="Ex: Doe" required><br>
+                Email<input type="text" formControlName="email" placeholder="Ex: johndoe@gmail.com" required><br>
+                Phone Number<input type="text" formControlName="phone"  placeholder="Ex: 123-456-7890" required><br>
+                Linkedin<input type="text" formControlName="linkedin"  placeholder="Enter Profile Link" required><br>
+                GitHub<input type="text" formControlName="github"  placeholder="Enter Profile Link" required><br>
+            </div>
+    
+            <div class="block">
+                <h1>Education
+                    <button class="icon" (click)="addEducation()">+</button>
+                    <button class="icon" (click)="delEducation()">-</button> 
+                </h1>
+                <div
+                formArrayName="educationBlocks"
+                *ngFor="let education of educationBlocks.controls; let i = index"
+                >
+                <div
+                    [ngClass]="{
+                    'education-block': educationBlocks.controls.length > 1
+                    }"
+                    [formGroupName]="i"
+                >
+                    <div class="form-row">
+                    <div class="form-group col-md-10">
+                        <label>University</label>
+                        <input
+                        class="form-control"
+                        type="text"
+                        placeholder="Ex: University of California, Santa Cruz"
+                        formControlName="university"
+                        required
+                        />
+                    </div>
+                    </div>
+    
+                    <div class="form-row">
+                        <div class="form-group col-md-10">
+                            <label>Degree Type</label>
+                            <input
+                            class="form-control"
+                            type="text"
+                            placeholder="Ex: Bachelors of Science"
+                            formControlName="degree"
+                            required
+                            />
+                        </div>
+                        </div>
+    
+                    <div class="form-row">
+                    <div class="form-group col-md-10">
+                        <label attr.for="{{ 'companyId' + i }}">Major</label>
+                        <input
+                        class="form-control"
+                        type="text"
+                        placeholder="Ex: Computer Science"
+                        formControlName="major"
+                        required
+                        />
+                    </div>
+                    </div>
+    
+                    <div class="form-row">
+                    <div class="form-group col-md-10">
+                        <label attr.for="{{ 'locationId' + i }}">Location</label>
+                        <input
+                        class="form-control"
+                        type="text"
+                        placeholder="Ex: Santa Cruz, CA"
+                        formControlName="location"
+                        required
+                        />
+                    </div>
+                    </div>
+    
+                    <div class="form-row">
+                    <div class="form-group col-md-5">
+                        <label attr.for="{{ 'startDateId' + i }}">Start Date</label>
+                        <input
+                        class="form-control"
+                        type="text"
+                        placeholder="Ex: 2022"
+                        formControlName="startDate"
+                        required
+                        />
+                    </div>
+    
+                    <div class="form-group col-md-5">
+                        <label attr.for="{{ 'endDateId' + i }}">End Date</label>
+                        <input
+                        class="form-control"
+                        type="text"
+                        placeholder="Ex: 2023, Present"
+                        formControlName="endDate"
+                        required
+                        />
+                    </div>
+                    </div>
+    
+                    <div class="form-row">
+                        <div class="form-group col-md-10">
+                            <label attr.for="{{ 'descId' + i }}">Grade Point Average</label>
+                            <input
+                            class="form-control"
+                            type="text"
+                            placeholder="Ex: 4.0/4.0, Dean's List"
+                            formControlName="gpa"
+                            />
+        
+                            <label attr.for="{{ 'descId' + i }}">Relevant Coursework</label>
+                            <input
+                            class="form-control"
+                            type="text"
+                            placeholder="Ex: Discrete Mathemetics, Introduction to CS"
+                            formControlName="coursework"
+                            />
+                    </div>
+                    </div>
+                    <hr *ngIf="i !== experienceBlocks.controls.length - 1" />
+                </div>
+                </div>
+                
+            </div>
+    
+    
+            <div class="block">
+                <h1>Experience
+                    <button class="icon" (click)="addExperience()">+</button>
+                    <button class="icon" (click)="delExperience()">-</button> 
+                </h1>
+                <div
+                formArrayName="experienceBlocks"
+                *ngFor="let experience of experienceBlocks.controls; let i = index"
+                >
+                <div
+                    [ngClass]="{
+                    'experience-block': experienceBlocks.controls.length > 1
+                    }"
+                    [formGroupName]="i"
+                >
+                    <div class="form-row">
+                    <div class="form-group col-md-10">
+                        <label attr.for="{{ 'titleId' + i }}">Title</label>
+                        <input
+                        class="form-control"
+                        type="text"
+                        placeholder="Ex: Software Engineer Intern"
+                        formControlName="title"
+                        />
+                    </div>
+                    </div>
+    
+                    <div class="form-row">
+                    <div class="form-group col-md-10">
+                        <label attr.for="{{ 'companyId' + i }}">Company</label>
+                        <input
+                        class="form-control"
+                        id="{{ 'companyId' + i }}"
+                        type="text"
+                        placeholder="Ex: Microsoft"
+                        formControlName="company"
+                        />
+                    </div>
+                    </div>
+    
+                    <div class="form-row">
+                    <div class="form-group col-md-10">
+                        <label attr.for="{{ 'locationId' + i }}">Location</label>
+                        <input
+                        class="form-control"
+                        id="{{ 'locationId' + i }}"
+                        type="text"
+                        placeholder="Ex: Redmond, Washington"
+                        formControlName="location"
+                        />
+                    </div>
+                    </div>
+    
+                    <div class="form-row">
+                    <div class="form-group col-md-5">
+                        <label attr.for="{{ 'startDateId' + i }}">Start Date</label>
+                        <input
+                        class="form-control"
+                        id="{{ 'startDateId' + i }}"
+                        type="text"
+                        placeholder="Ex: October 2022"
+                        formControlName="startDate"
+                        />
+                    </div>
+    
+                    <div class="form-group col-md-5">
+                        <label attr.for="{{ 'endDateId' + i }}">End Date</label>
+                        <input
+                        class="form-control"
+                        id="{{ 'endDateId' + i }}"
+                        type="text"
+                        placeholder="Ex: November 2023, Present"
+                        formControlName="endDate"
+                        />
+                    </div>
+                    </div>
+    
+                    <div class="form-row">
+                        <div class="form-group col-md-10">
+                            <label attr.for="{{ 'descId' + i }}">Bullet Point 1 (Recommended)</label>
+                            <input
+                            class="form-control"
+                            type="text"
+                            placeholder="Ex: Developed a REST API using..."
+                            formControlName="desc1"
+                            />
+        
+                            <label attr.for="{{ 'descId' + i }}">Bullet Point 2 (Recommended)</label>
+                            <input
+                            class="form-control"
+                            type="text"
+                            placeholder="Ex: Explored ways to visualize..."
+                            formControlName="desc2"
+                            />
+        
+                            <label attr.for="{{ 'descId' + i }}">Bullet Point 3 (Optional)</label>
+                            <input
+                            class="form-control"
+                            type="text"
+                            placeholder="Ex: Contributed 50K+ lines of code to..."
+                            formControlName="desc3"
+                            />
+                    </div>
+                    </div>
+                    <hr *ngIf="i !== experienceBlocks.controls.length - 1" />
+                </div>
+                </div>
+            </div>
+    
+            <div class="block">
+                <h1>Projects
+                    <button class="icon" (click)="addProject()">+</button>
+                    <button class="icon" (click)="delProject()">-</button>
+                </h1>
+                <div
+                formArrayName="projectBlocks"
+                *ngFor="let project of projectBlocks.controls; let i = index"
+                >
+                <div
+                    [ngClass]="{
+                    'experience-block': projectBlocks.controls.length > 1
+                    }"
+                    [formGroupName]="i"
+                >
+                    <div class="form-row">
+                    <div class="form-group col-md-10">
+                        <label attr.for="{{ 'nameId' + i }}">Name</label>
+                        <input
+                        class="form-control"
+                        id="{{ 'nameId' + i }}"
+                        type="text"
+                        placeholder="Ex: TicTacToe"
+                        formControlName="name"
+                        />
+                    </div>
+                    </div>
+    
+                    <div class="form-row">
+                    <div class="form-group col-md-10">
+                        <label attr.for="{{ 'skillsId' + i }}">Skills</label>
+                        <input
+                        class="form-control"
+                        id="{{ 'skillsId' + i }}"
+                        type="text"
+                        placeholder="Ex: Python, JavaScript, etc."
+                        formControlName="skills"
+                        />
+                    </div>
+                    </div>
+    
+                    <div class="form-row">
+                    <div class="form-group col-md-5">
+                        <label attr.for="{{ 'startDateId' + i }}">Start Date</label>
+                        <input
+                        class="form-control"
+                        id="{{ 'startDateId' + i }}"
+                        type="text"
+                        placeholder="Ex: December 2022"
+                        formControlName="startDate"
+                        />
+                    </div>
+    
+    
+                    <div class="form-group col-md-5">
+                        <label attr.for="{{ 'endDateId' + i }}">End Date</label>
+                        <input
+                        class="form-control"
+                        id="{{ 'endDateId' + i }}"
+                        type="text"
+                        placeholder="Ex: March 2023, Present"
+                        formControlName="endDate"
+                        />
+                    </div>
+                    </div>
+    
+                    <div class="form-row">
+                    <div class="form-group col-md-10">
+                        <label attr.for="{{ 'descId' + i }}">Bullet Point 1 (Recommended)</label>
+                        <input
+                        class="form-control"
+                        type="text"
+                        placeholder="Ex: Developed full stack web application to..."
+                        formControlName="desc1"
+                        />
+    
+                        <label attr.for="{{ 'descId' + i }}">Bullet Point 2 (Recommended)</label>
+                        <input
+                        class="form-control"
+                        type="text"
+                        placeholder="Ex: Optimized code to..."
+                        formControlName="desc2"
+                        />
+    
+                        <label attr.for="{{ 'descId' + i }}">Bullet Point 3 (Optional)</label>
+                        <input
+                        class="form-control"
+                        type="text"
+                        placeholder="Ex: Implemented GitHub OAuth to..."
+                        formControlName="desc3"
+                        />
+                    </div>
+                    </div>
+                    <hr *ngIf="i !== projectBlocks.controls.length - 1" />
+                </div>
+                </div>
+            </div>
+    
+            <div class="block">
+                <h1>Technical Skills</h1>
+                Frameworks<input type="text" formControlName="frameworks" placeholder="Ex: Angular, React, etc."><br>
+                Languages<input type="text" formControlName="languages"  placeholder="Ex: Python, Java, etc."><br>
+                Developer Tools<input type="text" formControlName="devtools"  placeholder="Ex: XCode, VSCode"><br>
+                Libraries<input type="text" formControlName="libraries"  placeholder="Ex: NumPY, pandas"><br>
+                <button (click)="onSubmit(resumeData)">Submit</button>
+                <button onclick="window.open('https://codepen.io/knaman2609/pen/Zbyjvv')">Template</button>
+            </div>
+            
+        </div>
+        </form>
+    </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</div>
