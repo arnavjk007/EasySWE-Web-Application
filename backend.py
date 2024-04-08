@@ -15,7 +15,7 @@ internship_values = []
 
 def scrape():
     #print("called scrape!")
-    url = "https://github.com/SimplifyJobs/Summer2024-Internships/blob/dev/README.md"
+    url = <URL>
     response = requests.get(url)
     global internship_values
     #internship_values = parseHTML(response.content)
