@@ -40,6 +40,7 @@
    text-decoration: none;
    color: black;
    font-weight: 700;
+   transition: 0.5s;
 }
 
 section {
