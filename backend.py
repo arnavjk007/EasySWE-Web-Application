@@ -11,20 +11,19 @@ cors = CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
 
 internship_values = []
-#scrapes internships from job postings -> list of dict
 
+#scrapes internships from job postings -> list of dict
 def scrape():
     #print("called scrape!")
     url = <URL>
     response = requests.get(url)
     global internship_values
-    #internship_values = parseHTML(response.content)
     return parseHTML(response.content)
     
 def parseHTML(content):
 
     soup = BeautifulSoup(content, 'html.parser')
-    #one table for github
+    
     table = soup.find_all('script')
     
     #contains data payload, assuming its last script
@@ -39,10 +38,8 @@ def parseHTML(content):
     #limit = 52 = 50 elements
     payload_data = json_soup.findAll('tr', limit=52)
     
-    
     payload_soup = BeautifulSoup(str(payload_data), 'html.parser')
-    
-    
+       
     payload_row_data = payload_soup.findAll('td')
     
     # array with the list with final data.. format: company name, role name, location(s), application link, date posted 
@@ -60,8 +57,10 @@ def parseHTML(content):
             data_count = 0
             link_soup = BeautifulSoup(str(payload_data[index + 1]), 'html.parser')
             link_list = link_soup.find_all('a', limit=2, href=True)
+            if len(link_list) == 0:
+                final_data[index][3] = "No Longer Accepting Applications"
+                continue
             final_data[index][3] = link_list[1].get('href') if len(link_list) > 1 else link_list[0].get('href')
-            #final_data[index][3] = link_soup.find('a')['href']
             index += 1
             
         temp.append(value.text)
@@ -80,7 +79,7 @@ def parseHTML(content):
     i = 0
     title = ''
     for internPosting in final_data:
-        if internPosting and len(internPosting) == 5 and i < 50:
+        if internPosting and len(internPosting) == 5 and i < index - 1:
             if internPosting[0] == '↳':
                 internPosting[0] = title
             else:
@@ -115,8 +114,6 @@ def parseHTML(content):
 def get_data():
     global internship_values
     return scrape()
-    #return jsonify(internship_values)  
-
 
 @app.route("/resume", methods=["POST"])
 @cross_origin()
@@ -127,7 +124,6 @@ def build_resume():
             page = buildTemplate(data)
             print("Got POST request ... " + str(request.json))
             return jsonify(page)
-            #return jsonify(isError=False, message="Success", data=page, statusCode=200), 200
         else:
             return jsonify(isError=True, message="Method not allowed", statusCode=404), 404
     except:
@@ -140,10 +136,9 @@ def buildTemplate(info):
 
 if __name__ == '__main__':
 
-    #scheduler = BackgroundScheduler()
-    #scheduler.add_job(scrape, 'interval', hours=24)
-    #scheduler.start()
-    #app.run(debug=True)
+    scheduler = BackgroundScheduler()
+    scheduler.add_job(scrape, 'interval', hours=24)
+    scheduler.start()
     app.run(host='0.0.0.0',debug=True)
 
     
