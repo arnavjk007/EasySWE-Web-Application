@@ -37,7 +37,7 @@ export class InternshipsComponent implements OnInit {
     //"https://easyswe-be-4ooer6jk5a-uw.a.run.app"
     
     //this.http.get("https://easyswe-be-4ooer6jk5a-uw.a.run.app", this.httpOptions).subscribe((result:any) =>
-    this.http.get("https://flask-backend-insinw1t5-arnavjk007s-projects.vercel.app/?vercelToolbarCode=bMO8t_kWghpjPjo", this.httpOptions).subscribe((result:any) =>
+    this.http.get("https://flask-backend-sage.vercel.app/?vercelToolbarCode=_s_rAquqTBXO--P", this.httpOptions).subscribe((result:any) =>
     {
       //result has all the data we need and we are transferring it over to the variable in this file so it can be iterated over in the HTML file 
       this.listofjobs=result;
